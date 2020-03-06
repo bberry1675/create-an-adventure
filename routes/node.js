@@ -14,6 +14,11 @@ router.get('/:node_id', (req,res,next) => {
         }
         else{
             if(doc){
+                //populate the document with the documents in action
+                
+                //send the HTMl template the text in the current story node
+
+                //send the HTML template the action values and the corresponding _id values for the next documents
                 res.json(doc);
                 return;
             }

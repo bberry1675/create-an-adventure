@@ -5,12 +5,15 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const Nodes = require('./models/story_node');
+const ejs = require('ejs');
 require('dotenv').config()
 
 let indexRouter = require('./routes/index');
 let nodeRouter = require('./routes/node.js');
 
 let app = express();
+
+app.set('view engine', 'ejs')
 
 app.use(logger('dev'))
 app.use(express.json())

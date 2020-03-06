@@ -4,7 +4,7 @@ let path = require('path')
 
 //home page to start the adventure
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'../views/index.html'));
+    res.render('index', {starting_node: req.app.settings.starting_id})
 });
 
 module.exports = router;
