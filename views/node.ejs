@@ -6,10 +6,10 @@
 <body>
     <h1><%- story %> </h1>
     <% actions.forEach(element => { %>
-        <a href="/node/<%- element._id %>"><%- element.action %> </a> 
+        <a href="/node/<%- element._id %>"><%- element.action %></a><br> 
     <% }) %>
 
-    
+    <br>
     <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST">
         <label for="action">Enter the action:</label>
         <input type="text" id="action" name="action"/>
