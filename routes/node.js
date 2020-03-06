@@ -1,5 +1,6 @@
 let express = require('express');
 let Nodes = require('../models/story_node');
+const {check} = require('express-validator')
 
 
 let router = new express.Router();
@@ -42,6 +43,13 @@ router.get('/:node_id', (req,res,next) => {
             }
         }
     });
+});
+
+router.post("/:node_id/new", [check('action'), check('story')] ,(req,res,next) => {
+    let parent_node = req.params.node_id;
+    console.log(`action: [${req.body.action}] story: [${req.body.story}]`);
+    res.json(req.body);
+    return;
 });
 
 
