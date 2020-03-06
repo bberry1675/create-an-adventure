@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include('./partials/head.ejs') %> 
+</head>
+<body>
+    <h1><%- story %> </h1>
+    <% actions.forEach(element => { %>
+        <a href="/node/<%- element._id %>"><%- element.action %> </a> 
+    <% }) %>
+
+    <textarea rows="6" cols="70"  form="diverge_form">Enter Story Here...</textarea>
+    <form action="/node/<%- node_id %>/new" id="diverge_form">
+        <button type="submit">Diverge</button>
+    </form>
+</body>
+</html>
