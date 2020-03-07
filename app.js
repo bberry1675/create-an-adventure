@@ -66,6 +66,6 @@ Nodes.findOne({action: null},(err, res) => {
     }
 })
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`App is listening on port: ${process.env.PORT || 3000}`)
+app.listen(process.env.PORT || 3000, process.env.IP || "localhost" ,() => {
+    console.log(`App is listening on ${process.env.IP || "localhost"}:${process.env.PORT || 3000}`)
 });
