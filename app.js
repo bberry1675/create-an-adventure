@@ -6,13 +6,15 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const Nodes = require('./models/story_node');
 require('dotenv').config()
-
+const ejs = require('ejs')
 let indexRouter = require('./routes/index');
 let nodeRouter = require('./routes/node.js');
 
 let app = express();
 
+
 app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname,'./views'))
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -54,7 +56,7 @@ Nodes.findOne({action: null},(err, res) => {
     }
     else{
         if(res){
-            console.log("found the starting document with id:" + res._id);
+            console.log("found the starting document with id: " + res._id);
             app.set('starting_id',res._id);
         }
         else{

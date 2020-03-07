@@ -1,0 +1,21 @@
+form{
+    max-width: 40%;
+}
+
+#action-input{
+    margin-bottom: 5px;
+}
+
+#story-input{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+textarea{
+    align-content: center;
+    text-align: left;
+}
+
+textarea::placeholder{
+    text-align: left;
+}

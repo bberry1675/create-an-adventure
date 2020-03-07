@@ -1,6 +1,6 @@
 let express = require('express');
 let Nodes = require('../models/story_node');
-const {check} = require('express-validator')
+const {check, validationResult} = require('express-validator')
 
 
 let router = new express.Router();
@@ -47,8 +47,13 @@ router.get('/:node_id', (req,res,next) => {
 });
 
 router.post("/:node_id/new", [check('action').isLength({min: 4, max: 50}), check('story').isLength({min: 50, max: 300})] ,(req,res,next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        res.status(422).json({errors: errors.array()});
+        return;
+    }
+
     let parent_node_id = req.params.node_id;
-    console.log(`action: [${req.body.action}] story: [${req.body.story}]`);
 
     let new_story_node = new Nodes({
         action: req.body.action,

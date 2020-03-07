@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <% include('./partials/head.ejs') %> 
+    <%- include('partials/head.ejs') %> 
+
+    <link rel="stylesheet" href="/css/node.css">
 </head>
 <body>
     <h1><%- story %> </h1>
@@ -10,13 +12,20 @@
     <% }) %>
 
     <br>
-    <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST">
-        <label for="action">Enter the action:</label>
-        <input type="text" id="action" name="action"/>
-        <br>
-        <textarea placeholder="Enter Your Part Of The Story Here..." rows="6" cols="70"  form="diverge_form" name="story"></textarea>
-        <br>
-        <button type="submit">Diverge</button>
-    </form>
+    
+        <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST">
+            <div id="action-input" class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="action">Enter the action:</label>
+                    
+                </div>
+                <input class="form-control" type="text" id="action" name="action" required minlength="4" maxlength="50" aria-colcount="70"/>
+            </div>
+
+            <textarea id="story-input" class="input-group-text" placeholder="Enter Your Part Of The Story Here..." rows="6" cols="70"  form="diverge_form" name="story" required minlength="50" maxlength="300"></textarea>
+            <button class="btn btn-primary" type="submit">Diverge</button>
+        </form>
+    
+    
 </body>
 </html>
