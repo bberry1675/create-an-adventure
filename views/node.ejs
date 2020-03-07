@@ -11,7 +11,7 @@
     <h1><%- story %> </h1>
     <div id="action-container" class="list-group">
         <% actions.forEach(element => { %>
-        <a class="list-group-item list-group-item-active" href="/node/<%- element._id %>"><%- element.action %></a>
+        <a class="list-group-item list-group-item-action" href="/node/<%- element._id %>"><%- element.action %></a>
         <% }) %>
     </div>
 
