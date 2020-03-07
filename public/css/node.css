@@ -8,6 +8,10 @@ form{
     padding: 5px;
 }
 
+#action-container {
+    padding: 5px;
+}
+
 #action-input{
     margin-bottom: 5px;
 }
