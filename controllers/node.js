@@ -1,4 +1,5 @@
 const Nodes = require('../models/story_node')
+const {check, validationResult} = require('express-validator')
 
 module.exports.get_node = (req,res,next) => {
     let request_id = req.params.node_id;
@@ -39,6 +40,10 @@ module.exports.get_node = (req,res,next) => {
             }
         }
     });
+}
+
+module.exports.validate_post_new_node = () => {
+    return [check('action').isLength({min: 4, max: 50}), check('story').isLength({min: 50, max: 300})];
 }
 
 module.exports.post_new_node = (req,res,next) => {

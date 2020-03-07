@@ -1,10 +1,8 @@
 let express = require('express');
 let router = express.Router()
-let path = require('path')
+const indexController = require('../controllers/index')
 
 //home page to start the adventure
-router.get('/', (req, res) => {
-    res.render('index', {starting_node: req.app.settings.starting_id})
-});
+router.get('/', indexController.get_index);
 
 module.exports = router;
