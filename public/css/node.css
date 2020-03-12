@@ -28,3 +28,18 @@ button[type="submit"]{
 textarea::placeholder{
     text-align: left;
 }
+
+#google-signin{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+#social-signin{
+    margin-left:5px;
+}
+
+h1,h3, h5, h6{
+    margin-left:5px;
+}

@@ -14,7 +14,15 @@
         <a class="list-group-item list-group-item-action" href="/node/<%- element._id %>"><%- element.action %></a>
         <% }) %>
     </div>
-
+    <% if(user == undefined) { %>
+        <h3>To post please sign in</h3>
+        <div id="social-signin" class="row">
+            <a id="google-signin" class="btn btn-outline-dark" href="/auth/google">
+                <img src="/assets/btn_google_dark_normal_ios.svg"/>
+                Login with Google
+            </a>
+        </div>
+    <% } else {%>
     <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST" class="">
         <div id="action-input" class="input-group input-group-sm">
             <div class="input-group-prepend">
@@ -32,7 +40,11 @@
 
         <button class="btn btn-primary" type="submit">Diverge</button>
     </form>
-
+    <a href="/auth/google/logout">
+        <h6>Not <%- user.username %>, Logout</h6>
+    </a>
+    
+    <% } %>
 
 </body>
 

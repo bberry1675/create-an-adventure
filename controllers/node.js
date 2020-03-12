@@ -4,6 +4,14 @@ const {check, validationResult} = require('express-validator')
 module.exports.get_node = (req,res,next) => {
     let request_id = req.params.node_id;
 
+    if(req.user){
+        console.log('the request has a user session');
+        console.log(req.user);
+    }
+    else{
+        console.log('the request didnt have a user session');
+    }
+
     Nodes.findById(request_id, (err,doc) => {
         if(err){
             res.status(500).json({error: 'Finding node by ID failed'});
@@ -26,7 +34,8 @@ module.exports.get_node = (req,res,next) => {
                         res.render('node', {
                             node_id: populated_doc._id,
                             story: populated_doc.story,
-                            actions: populated_doc.next
+                            actions: populated_doc.next,
+                            user: req.user
                         })
                         return;
                     }
@@ -88,4 +97,9 @@ module.exports.post_new_node = (req,res,next) => {
             })
         }
     })
+}
+
+module.exports.add_node_to_session = (req,res,next) => {
+    req.session.current_node = req.params.node_id;
+    next();
 }
