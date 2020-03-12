@@ -8,8 +8,16 @@
 </head>
 
 <body class="bg-light">
-    <h1><%- story %> </h1>
+    <div class="card">
+        <div class="card-body">
+            <h1><%- story %> </h1>
+        </div>
+    </div>
+    
     <div id="action-container" class="list-group">
+        <% if(actions && actions.length > 0) {%>
+            <a disabled class="list-group-item">Please select an action:</a>
+        <% } %> 
         <% actions.forEach(element => { %>
         <a class="list-group-item list-group-item-action" href="/node/<%- element._id %>"><%- element.action %></a>
         <% }) %>
@@ -22,6 +30,11 @@
                 Login with Google
             </a>
         </div>
+    <% } else if(user.added_node) {%>
+        <h4>Already created a node, thank you for your addition</h4>
+        <a href="/auth/google/logout">
+            <h6>Not <%- user.username %>, Logout</h6>
+        </a>
     <% } else {%>
     <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST" class="">
         <div id="action-input" class="input-group input-group-sm">

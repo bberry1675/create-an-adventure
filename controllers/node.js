@@ -1,5 +1,6 @@
 const Nodes = require('../models/story_node')
 const {check, validationResult} = require('express-validator')
+const Users = require('../models/user')
 
 module.exports.get_node = (req,res,next) => {
     let request_id = req.params.node_id;
@@ -58,8 +59,12 @@ module.exports.validate_post_new_node = () => {
 module.exports.post_new_node = (req,res,next) => {
 
     if(!req.user){
-        res.redirect(req.headers.referer);
+        res.status(401).json({errors: ['Must sign in before adding to the story']})
         return;
+    }
+
+    if(req.user.added_node){
+        res.status(403).json({errors: ['Already created a node']});
     }
 
     const errors = validationResult(req);
@@ -95,8 +100,24 @@ module.exports.post_new_node = (req,res,next) => {
                             return;
                         }
                         else{
-                            res.redirect(`/node/${product._id}`);
-                            return;
+                            Users.findById(req.user._id,(err, userDoc) => {
+                                if(err){
+                                    //TODO: Could not find the user document
+                                }
+
+                                if(userDoc){
+                                    userDoc.added_node = product._id;
+                                    userDoc.save((err, savedUser) => {
+                                        if(err){
+                                            //TODO: could not save the user document with the created node id
+                                        }
+
+                                        res.redirect(`/node/${product._id}`);
+                                        return;
+                                    })
+                                }
+                            })
+                            
                         }
                     })
                 }

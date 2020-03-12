@@ -40,6 +40,10 @@ textarea::placeholder{
     margin-left:5px;
 }
 
-h1,h3, h5, h6{
+h1,h3,h4, h5, h6{
     margin-left:5px;
+}
+
+.card{
+    margin: 5px;
 }
