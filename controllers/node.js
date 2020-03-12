@@ -56,6 +56,12 @@ module.exports.validate_post_new_node = () => {
 }
 
 module.exports.post_new_node = (req,res,next) => {
+
+    if(!req.user){
+        res.redirect(req.headers.referer);
+        return;
+    }
+
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         res.status(422).json({errors: errors.array()});
