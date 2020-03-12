@@ -24,7 +24,7 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GCST,
     callbackURL: process.env.GCCB
 },(accessToken, refreshToken, profile, done) => {
-    console.log(profile);
+
     Users.findOne({googleid: profile.id},(err, userDoc) => {
         if(err){
             //TODO: impelement the error case for finding if a user exists

@@ -5,14 +5,6 @@ const Users = require('../models/user')
 module.exports.get_node = (req,res,next) => {
     let request_id = req.params.node_id;
 
-    if(req.user){
-        console.log('the request has a user session');
-        console.log(req.user);
-    }
-    else{
-        console.log('the request didnt have a user session');
-    }
-
     Nodes.findById(request_id, (err,doc) => {
         if(err){
             res.status(500).json({error: 'Finding node by ID failed'});
