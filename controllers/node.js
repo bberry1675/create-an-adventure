@@ -36,7 +36,8 @@ module.exports.get_node = (req,res,next) => {
                             node_id: populated_doc._id,
                             story: populated_doc.story,
                             actions: populated_doc.next,
-                            user: req.user
+                            user: req.user,
+                            starting_id: req.app.settings.starting_id
                         })
                         return;
                     }
