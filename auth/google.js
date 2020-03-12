@@ -20,9 +20,9 @@ passport.deserializeUser((mongo_id , done) => {
 
 
 passport.use(new GoogleStrategy({
-    clientID: '165785476963-be992oqmajruoa9mfa35jfabdq8r4cfa.apps.googleusercontent.com',
-    clientSecret: 'wGQV6OcHL9pDzpJMM2Mzxw4d',
-    callbackURL: '/auth/google/callback'
+    clientID: process.env.GCID,
+    clientSecret: process.env.GCST,
+    callbackURL: process.env.GCCB
 },(accessToken, refreshToken, profile, done) => {
     console.log(profile);
     Users.findOne({googleid: profile.id},(err, userDoc) => {

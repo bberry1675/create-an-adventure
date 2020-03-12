@@ -6,6 +6,9 @@ Add a file `.env` to the root of the filesystem with options for the server.
 |-----------|---------------|
 | DBUSER    | Username of database user |
 | DBPASS    | Password of database user |
+| GCID      | Google Credentials Client ID |
+| GCST      | Google Credentials Secret |
+| GCCB      | Google Credentials callback URL |
 | PORT      | Port for the server to listen on, default: `3000` |
 | IP        | IP for the server to listen on, default: `localhost` |
 
