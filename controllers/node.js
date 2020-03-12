@@ -2,6 +2,15 @@ const Nodes = require('../models/story_node')
 const {check, validationResult} = require('express-validator')
 const Users = require('../models/user')
 
+function checkActionAndStoryWhitespace(action, story){
+    let trimmedAction = action.replace(/\s/g, "");
+    let trimmedStory= story.replace(/\s/g, "");
+    return  trimmedAction.length >= 4 &&
+            trimmedAction.length <= 50 &&
+            trimmedStory.length >= 50 &&
+            trimmedStory.length <= 300
+}
+
 module.exports.get_node = (req,res,next) => {
     let request_id = req.params.node_id;
 
@@ -63,6 +72,11 @@ module.exports.post_new_node = (req,res,next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         res.status(422).json({errors: errors.array()});
+        return;
+    }
+
+    if(!checkActionAndStoryWhitespace(action,story)){
+        res.status(422).json({errors: ['Action must contain 4 to 50 characters and story must contain 50 to 300 characters']});
         return;
     }
 
