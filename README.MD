@@ -24,3 +24,5 @@ Starting up the server with developer dependancy `nodemon` to auto restart the s
 ```bash
 nodemon app.js
 ```
+
+[Test Deployment](https://community-adventure-test.herokuapp.com/)
