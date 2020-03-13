@@ -14,6 +14,9 @@ passport.deserializeUser((mongo_id , done) => {
         if(res){
             done(null,res);
         }
+        else{
+            done({error:'could not find user in database'}, null);
+        }
         
     });
 })
