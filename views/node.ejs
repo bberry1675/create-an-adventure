@@ -20,7 +20,7 @@
     
     <div id="action-container" class="list-group">
         <% if(actions && actions.length > 0) {%>
-            <a disabled class="list-group-item">Please select an action:</a>
+            <a disabled class="list-group-item"><h4>Please select an action:</h4></a>
         <% } %> 
         <% actions.forEach(element => { %>
         <a class="list-group-item list-group-item-action" href="/node/<%- element._id %>"><%- element.action %></a>
