@@ -75,7 +75,7 @@ module.exports.post_new_node = (req,res,next) => {
         return;
     }
 
-    if(!checkActionAndStoryWhitespace(action,story)){
+    if(!checkActionAndStoryWhitespace(req.body.action,req.body.story)){
         res.status(422).json({errors: ['Action must contain 4 to 50 characters and story must contain 50 to 300 characters']});
         return;
     }
