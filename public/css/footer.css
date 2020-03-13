@@ -1,0 +1,11 @@
+footer{
+    /* position:absolute;
+    bottom:0;
+    height: 50px; */
+    margin-top: 20px;
+}
+
+
+footer>p{
+    margin:0px;
+}

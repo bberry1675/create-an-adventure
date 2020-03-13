@@ -39,6 +39,7 @@ textarea::placeholder{
 
 #social-signin{
     margin-left:5px;
+    min-width: 100%;
 }
 
 

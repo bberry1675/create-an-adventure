@@ -5,6 +5,7 @@
     <%- include('partials/head.ejs') %>
 
     <link rel="stylesheet" href="/css/node.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body class="bg-light">
@@ -26,18 +27,29 @@
         <% }) %>
     </div>
     <% if(user == undefined) { %>
-        <h3>To post please sign in</h3>
-        <div id="social-signin" class="row">
-            <a id="google-signin" class="btn btn-outline-dark" href="/auth/google">
-                <img src="/assets/btn_google_dark_normal_ios.svg"/>
-                Login with Google
-            </a>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">To post please sign in</h3>
+                <div class="card-text" id="social-signin" class="row">
+                    <a id="google-signin" class="btn btn-outline-dark" href="/auth/google">
+                        <img src="/assets/btn_google_dark_normal_ios.svg"/>
+                        Login with Google
+                    </a>
+                </div>
+            </div>
         </div>
+        
+        
     <% } else if(user.added_node) {%>
-        <h4>Already created a node, thank you for your addition</h4>
-        <a href="/auth/google/logout">
-            <h6>Not <%- user.username %>, Logout</h6>
-        </a>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Already created a node, thank you for your addition</h4>
+                <a class="card-text" href="/auth/google/logout">
+                    <h6>Not <%- user.username %>, Logout</h6>
+                </a>
+            </div>
+        </div>
+
     <% } else {%>
     <form action="/node/<%- node_id %>/new" id="diverge_form" method="POST" class="">
         <div id="action-input" class="input-group input-group-sm">
@@ -61,7 +73,8 @@
     </a>
     
     <% } %>
-
+    <br>
+    <%- include('./partials/footer.ejs') %> 
 </body>
 
 </html>

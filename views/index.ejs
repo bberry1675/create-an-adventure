@@ -2,11 +2,52 @@
 <html>
 <head>
     <%- include('./partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body class="bg-light">
     <h1>
-        Welcome to the adventure
+        Welcome to our Community Adventure
     </h1>
-    <a href="/node/<%= starting_node %>">Start the adventure</a>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">
+                Purpose:
+            </h2>
+            <h3 class="card-text">
+                The purpose of this project is to see where a story can go if anyone and everyone had a voice.
+            </h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">
+                How to contribute:
+            </h2>
+            <h3 class="card-text">
+                The story is organized into nodes with actions connecting a child node to a parent node. At any point in the story you can diverge the plot by performing an action on the current story node. Your addition to the story will become a child node and the action you want to perform on the parent becomes the link. E.g. after defeating the final boss you can continue the existing story and slay your enemy or you can diverge the story and show mercy. To post an update to the story you must sign into a google account (this is to ensure everyone only gets one update) and a form will be added to the page allowing you to diverge.
+            </h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">
+                Restrictions on contribution:
+            </h2>
+            <h3 class="card-text">
+                Both the action and story inputs have restrictions on the length. Action inputs must be between 4 and 50 characters while the story input must be between 50 and 300 characters. The server doesn't count whitespace towards the character count so actions with 49 letters and one space would not be accepted. Every post is connected with a google account so after posting once you cannot use the same account again.
+            </h3>
+        </div>
+    </div>
+
+   
+    
+
+
+    <a id="starting_link" href="/node/<%= starting_node %>">Start the adventure</a>
+
+    <%- include('./partials/footer.ejs') %> 
 </body>
 </html>

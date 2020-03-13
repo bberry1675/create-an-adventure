@@ -1,0 +1,23 @@
+body{
+    margin: 5px;
+}
+
+.card{
+    margin: 5px;
+}
+
+h3{
+    font-size: 1vw;
+}
+
+h2{
+    font-size: 2vw;
+}
+
+h1{
+    font-size: 3vw;
+}
+
+#starting_link{
+    font-size: 2vw;
+}
